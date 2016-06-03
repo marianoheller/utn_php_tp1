@@ -57,4 +57,15 @@ class Curso {
         $rowsUpdated = $req->rowCount();
         return $rowsUpdated;
     }
+
+    public static function eraseWithId($id) {
+        $db = Db::getInstance();
+        //checkeo q sea un int
+        $id = intval($id);
+        $req = $db->prepare("DELETE FROM curso WHERE id=$id");
+
+        $req->execute(array('id' => $id));
+        $rowsUpdated = $req->rowCount();
+        return $rowsUpdated;
+    }
 }

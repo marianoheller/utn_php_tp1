@@ -37,4 +37,11 @@
           $curso = Curso::find($_GET['id']);
           require_once("views/cursos/edit.php");
       }
+
+      public function borrar() {
+          if ( isset($_GET['id']) )
+              $rowsUpdated = Curso::eraseWithId( $_GET['id'] );
+
+          require_once("views/cursos/borrar.php");
+      }
   }
