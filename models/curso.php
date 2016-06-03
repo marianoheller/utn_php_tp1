@@ -58,6 +58,13 @@ class Curso {
         return $rowsUpdated;
     }
 
+    public static function insertCurso($nombre,$turno) {
+        $db = Db::getInstance();
+        $req = $db->prepare("INSERT into curso (nombre,turno) values (:nombre,:turno)");
+
+        $req->execute(array( 'nombre' => $nombre, 'turno' => $turno) );
+    }
+
     public static function eraseWithId($id) {
         $db = Db::getInstance();
         //checkeo q sea un int

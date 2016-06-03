@@ -34,6 +34,7 @@
         <?php } ?>
         </tbody>
     </table>
+    <a href='?controller=cursos&action=agregar'>Agregar</a>
 </body>
 </html>
 

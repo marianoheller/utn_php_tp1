@@ -45,6 +45,15 @@ require_once("models\alumno.php");
           require_once("views/cursos/edit.php");
       }
 
+      public function agregar() {
+          if ( isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['turno']) ) {
+              $return = Curso::insertCurso($_POST['nombre'], $_POST['turno']);
+              $this->index();
+          }
+          else
+            require_once("views/cursos/agregar.php");
+      }
+
       public function borrar() {
           if ( isset($_GET['id']) )
               $rowsUpdated = Curso::eraseWithId( $_GET['id'] );
