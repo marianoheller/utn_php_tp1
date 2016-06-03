@@ -5,6 +5,9 @@
  * Date: 02/06/2016
  * Time: 14:07
  */
+
+
+
   function call($controller, $action) {
       // get controller
       require_once('controllers/' . $controller . '_controller.php');

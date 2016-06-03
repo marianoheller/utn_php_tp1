@@ -6,6 +6,6 @@
  * Time: 13:58
  */
 	const SERVIDOR = 'localhost';
-	const USUARIO = 'root';
-	const PASSWD = '';
+	const USUARIO = 'utn';
+	const PASSWD = 'utn';
 	const BASE_DATOS = 'curso_utn';

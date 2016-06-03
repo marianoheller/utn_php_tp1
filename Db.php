@@ -7,7 +7,7 @@
  * Time: 13:55
  */
 
-require("datos_conexion.php");
+require_once("datos_conexion.php");
 
 class Db {
     private static $instance = NULL;

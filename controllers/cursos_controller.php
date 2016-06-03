@@ -5,6 +5,9 @@
  * Date: 02/06/2016
  * Time: 14:23
  */
+
+
+
   class CursosController {
       public function index() {
           // all cursos en una variable

@@ -6,6 +6,8 @@
  * Time: 14:32
  */
 
+require_once("Db.php");
+
 class Curso {
     // we define 3 attributes
     // they are public so that we can access them using $post->author directly
@@ -25,7 +27,7 @@ class Curso {
         $req = $db->query('SELECT * FROM curso');
 
         foreach($req->fetchAll() as $curso) {
-            $list[] = new Curso($curso['id'], $curso['nombre'], $curso['turn']);
+            $list[] = new Curso($curso['id'], $curso['nombre'], $curso['turno']);
         }
 
         return $list;
