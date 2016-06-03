@@ -6,6 +6,7 @@
         <header>
             <a href='/'>Home</a>
             <a href='?controller=cursos&action=index'>Cursos</a>
+            <a href='?controller=alumnos&action=index'>Alumnos</a>
         </header>
             <br>
         <?php require_once('rutas.php'); ?>
