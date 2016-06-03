@@ -24,7 +24,7 @@
             <tr>
                 <td><?php echo $curso->nombre;?></td>
                 <td><?php echo $curso->turno;?></td>
-                <td><?php echo "aa";?></td>
+                <td><?php echo $cantAlumnos[strval($curso->id)];?></td>
                 <td>
                     <a href='?controller=cursos&action=show&id=<?php echo $curso->id; ?>'>Ver</a>|
                     <a href='?controller=cursos&action=edit&id=<?php echo $curso->id; ?>'>Editar</a>|

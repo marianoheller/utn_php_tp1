@@ -6,12 +6,19 @@
  * Time: 14:23
  */
 
-
+require_once("models\alumno.php");
 
   class CursosController {
       public function index() {
           // all cursos en una variable
           $cursos= Curso::all();
+
+          // Get cant alumnos por curso
+          $cantAlumnos = [];
+          /** @var Curso $curso */
+          foreach($cursos as $curso) {
+              $cantAlumnos[strval($curso->id)] = Alumno::countAlumnosOnCurso($curso->id);
+          }
           require_once('views/cursos/index.php');
       }
 
@@ -32,7 +39,7 @@
           if ( isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['turno']) )
               $rowsUpdated = Curso::updateWithId( $_POST['id'],$_POST['nombre'],$_POST['turno']);
 
-          if ( $rowsUpdated == 0 )
+          if ( isset($rowsUpdated) && $rowsUpdated == 0 )
               unset( $rowsUpdated );
           $curso = Curso::find($_GET['id']);
           require_once("views/cursos/edit.php");
