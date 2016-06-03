@@ -1,10 +1,25 @@
 <p>Listado de cursos</p>
 
-
-<?php /** @var Curso $curso */
-    foreach($cursos as $curso) { ?>
-    <p>
-        <?php echo $curso->nombre; ?>
-        <a href='?controller=posts&action=show&id=<?php echo $post->id; ?>'>Mostrar</a>
-    </p>
+<table border="1">
+    <thead>
+        <th>Nombre</th>
+        <th>Turno</th>
+        <th>Cantidad alumnos</th>
+        <th>Accion</th>
+    </thead>
+    <tbody>
+<?php /** @var Curso $curso */ foreach($cursos as $curso) { ?>
+        <tr>
+            <td><?php echo $curso->nombre;?></td>
+            <td><?php echo $curso->turno;?></td>
+            <td><?php echo "aa";?></td>
+            <td>
+                <a href='?controller=posts&action=show&id=<?php echo $curso->id; ?>'>Ver</a>|
+                <a href='?controller=posts&action=edit&id=<?php echo $curso->id; ?>'>Editar</a>|
+                <a href='?controller=posts&action=borrar&id=<?php echo $curso->id; ?>'>Borrar</a>|
+            </td>
+        </tr>
 <?php } ?>
+    </tbody>
+</table>
+

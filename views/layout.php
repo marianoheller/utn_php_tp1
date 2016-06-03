@@ -8,8 +8,9 @@
             <a href='?controller=cursos&action=index'>Cursos</a>
         </header>
         <?php require_once('rutas.php'); ?>
+
         <footer>
-            Copyright Mariano Heller
+            By Mariano Heller
         </footer>
     <body>
 <html>
