@@ -44,4 +44,17 @@ class Curso {
 
         return new Curso($curso['id'], $curso['nombre'], $curso['turno']);
     }
+
+    public static function updateWithId($id,$nombre,$turno) {
+        $db = Db::getInstance();
+        //checkeo q sea un int
+        $id = intval($id);
+        $req = $db->prepare("UPDATE curso SET nombre=:nombre, turno=:turno WHERE id= :id");
+
+        $req->execute(array(    'nombre' => $nombre,
+                                'turno' => $turno,
+                                'id' => $id));
+        $rowsUpdated = $req->rowCount();
+        return $rowsUpdated;
+    }
 }

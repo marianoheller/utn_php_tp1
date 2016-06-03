@@ -14,9 +14,9 @@
             <td><?php echo $curso->turno;?></td>
             <td><?php echo "aa";?></td>
             <td>
-                <a href='?controller=posts&action=show&id=<?php echo $curso->id; ?>'>Ver</a>|
-                <a href='?controller=posts&action=edit&id=<?php echo $curso->id; ?>'>Editar</a>|
-                <a href='?controller=posts&action=borrar&id=<?php echo $curso->id; ?>'>Borrar</a>|
+                <a href='?controller=cursos&action=show&id=<?php echo $curso->id; ?>'>Ver</a>|
+                <a href='?controller=cursos&action=edit&id=<?php echo $curso->id; ?>'>Editar</a>|
+                <a href='?controller=cursos&action=borrar&id=<?php echo $curso->id; ?>'>Borrar</a>|
             </td>
         </tr>
 <?php } ?>

@@ -25,4 +25,16 @@
           $curso = Curso::find($_GET['id']);
           require_once('views/cursos/show.php');
       }
+
+      public function edit() {
+          if (!isset($_GET['id']))
+              return call('pages', 'error');
+          if ( isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['turno']) )
+              $rowsUpdated = Curso::updateWithId( $_POST['id'],$_POST['nombre'],$_POST['turno']);
+
+          if ( $rowsUpdated == 0 )
+              unset( $rowsUpdated );
+          $curso = Curso::find($_GET['id']);
+          require_once("views/cursos/edit.php");
+      }
   }

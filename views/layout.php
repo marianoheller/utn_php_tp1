@@ -7,9 +7,12 @@
             <a href='/'>Home</a>
             <a href='?controller=cursos&action=index'>Cursos</a>
         </header>
+            <br>
         <?php require_once('rutas.php'); ?>
 
-        <footer>
+        <br>
+        <br>
+        <footer style="font-size: 12px">
             By Mariano Heller
         </footer>
     <body>
