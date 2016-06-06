@@ -43,6 +43,17 @@ class Alumno {
         return $cant;
     }
 
+    public static function getListing() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('select alumno.id id, alumno.nombre nombre, alumno.edad edad,curso.nombre curso
+                             from alumno
+                             left join curso on curso.id=curso_id');
+
+        $fetched = $req->fetchAll();
+        return $fetched;
+    }
+
     public static function getAlumnosOnCurso($id) {
         $list = [];
         $db = Db::getInstance();
@@ -80,15 +91,16 @@ class Alumno {
     }
 
 
-    public static function updateWithId($id,$nombre,$edad)
+    public static function updateWithId($id,$nombre,$edad,$curso_id)
     {
         $db = Db::getInstance();
         //checkeo q sea un int
         $id = intval($id);
-        $req = $db->prepare("UPDATE alumno SET nombre=:nombre, edad=:edad WHERE id= :id");
+        $req = $db->prepare("UPDATE alumno SET nombre=:nombre, edad=:edad, curso_id=:curso_id WHERE id= :id");
 
         $req->execute(array('nombre' => $nombre,
             'edad' => $edad,
+            'curso_id' => $curso_id,
             'id' => $id));
         $rowsUpdated = $req->rowCount();
         return $rowsUpdated;
@@ -105,5 +117,13 @@ class Alumno {
         $rowsUpdated = $req->rowCount();
         return $rowsUpdated;
     }
+
+    public static function insertAlumno($nombre,$edad,$curso_id) {
+        $db = Db::getInstance();
+        $req = $db->prepare("INSERT into alumno (nombre,edad,curso_id) values (:nombre,:edad,:curso_id)");
+
+        $req->execute(array( 'nombre' => $nombre, 'edad' => $edad, 'curso_id' => $curso_id) );
+    }
+
 
 }
