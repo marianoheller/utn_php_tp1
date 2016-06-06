@@ -29,7 +29,27 @@ class Curso {
         foreach($req->fetchAll() as $curso) {
             $list[] = new Curso($curso['id'], $curso['nombre'], $curso['turno']);
         }
+        return $list;
+    }
 
+    public static function count() {
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT COUNT(*) cant FROM curso');
+
+        $req->execute();
+        $cant = $req->fetch();
+
+        return $cant["cant"];
+    }
+
+    public static function allWithPagination($inicio, $itemsPorPag) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query("SELECT * FROM curso LIMIT $inicio, $itemsPorPag");
+
+        foreach($req->fetchAll() as $curso) {
+            $list[] = new Curso($curso['id'], $curso['nombre'], $curso['turno']);
+        }
         return $list;
     }
 

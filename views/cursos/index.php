@@ -34,6 +34,30 @@
         <?php } ?>
         </tbody>
     </table>
+    <?php
+    $url = $_SERVER["REQUEST_URI"];
+    $urlAnt = $urlSig = $url;
+    if ($pagina != 1) {
+        if ( parse_url($url, PHP_URL_QUERY) )
+            $urlAnt .= "&p=$paginaAnterior&q=$q";
+        else
+            $urlAnt .= "?p=$paginaAnterior&q=$q";
+        echo "<a href='$urlAnt'>Anterior</a>";
+    }
+    else
+        echo "<a>Anterior</a>";
+    echo "|";
+    if ( ($pagina*$itemsPorPag) < $cantDeCursos ) {
+        if ( parse_url($url, PHP_URL_QUERY) )
+            $urlSig .=  "&p=$paginaSiguiente&q=$q";
+        else
+            $urlSig .= "?p=$paginaSiguiente&q=$q";
+        echo "<a href='$urlSig'>Siguiente</a>";
+    }
+    else
+        echo "<a>Siguiente</a>";
+    ?>
+    <br>
     <a href='?controller=cursos&action=agregar'>Agregar</a>
 </body>
 </html>
