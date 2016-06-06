@@ -79,4 +79,31 @@ class Alumno {
         return new Alumno($alumno['id'], $alumno['nombre'], $alumno['edad'], $alumno['curso_id']);
     }
 
+
+    public static function updateWithId($id,$nombre,$edad)
+    {
+        $db = Db::getInstance();
+        //checkeo q sea un int
+        $id = intval($id);
+        $req = $db->prepare("UPDATE alumno SET nombre=:nombre, edad=:edad WHERE id= :id");
+
+        $req->execute(array('nombre' => $nombre,
+            'edad' => $edad,
+            'id' => $id));
+        $rowsUpdated = $req->rowCount();
+        return $rowsUpdated;
+    }
+
+
+    public static function eraseWithId($id) {
+        $db = Db::getInstance();
+        //checkeo q sea un int
+        $id = intval($id);
+        $req = $db->prepare("DELETE FROM alumno WHERE id=$id");
+
+        $req->execute(array('id' => $id));
+        $rowsUpdated = $req->rowCount();
+        return $rowsUpdated;
+    }
+
 }

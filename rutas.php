@@ -34,7 +34,7 @@
   // lista de controladores y sus actions posibles (para saber cuando hay un error)
   $controllers = array( 'pages' => ['home', 'error'],
                         'cursos' => ['index','show','edit','borrar','agregar'],
-                        'alumnos' => ['index','edit']);
+                        'alumnos' => ['index','show','borrar','edit','agregar']);
 
   // check a ver si existe el controlador y la accion
   // si alguien quiere routear mal, salta error
