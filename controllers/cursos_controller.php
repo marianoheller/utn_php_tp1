@@ -14,19 +14,16 @@ require_once("models\alumno.php");
           $q="";
           $itemsPorPag = 3;
           $inicio = 0;
-          if (isset($_GET["q"])) {
+          if (isset($_GET["q"]))
               $q=$_GET["q"];
-              $inicio=0;
-          }
-          if (isset($_GET["p"])) {
+          if (isset($_GET["p"]))
               $inicio = ($_GET["p"]-1)*3;
-          }
           $pagina = ($inicio / 3)+1;
           $paginaAnterior = $pagina - 1;
           $paginaSiguiente = $pagina + 1;
 
-          $cursos= Curso::allWithPagination($inicio,$itemsPorPag);
-          $cantDeCursos = Curso::count();
+          $cursos= Curso::allWithPaginationAndSearch($inicio,$itemsPorPag,$q);
+          $cantDeCursos = Curso::countWithPaginationAndSearch($inicio,$itemsPorPag,$q);
 
           // Get cant alumnos por curso
           $cantAlumnos = [];

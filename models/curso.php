@@ -42,6 +42,29 @@ class Curso {
         return $cant["cant"];
     }
 
+    public static function countWithPaginationAndSearch($inicio, $itemsPorPag, $q) {
+        $db = Db::getInstance();
+        $inicio = intval($inicio);
+        //$req = $db->prepare("SELECT COUNT(*) cant FROM curso where nombre like '%$q%'  or turno like '%$q%' limit $inicio,$itemsPorPag");
+        $req = $db->prepare("SELECT COUNT(*) cant FROM curso where nombre like '%$q%'  or turno like '%$q%'");
+
+        $req->execute();
+        $cant = $req->fetch();
+
+        return $cant["cant"];
+    }
+
+    public static function allWithPaginationAndSearch($inicio, $itemsPorPag, $q) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query("SELECT * FROM curso  where nombre like '%$q%' LIMIT $inicio, $itemsPorPag");
+
+        foreach($req->fetchAll() as $curso) {
+            $list[] = new Curso($curso['id'], $curso['nombre'], $curso['turno']);
+        }
+        return $list;
+    }
+
     public static function allWithPagination($inicio, $itemsPorPag) {
         $list = [];
         $db = Db::getInstance();

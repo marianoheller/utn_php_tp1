@@ -12,6 +12,13 @@
 <body>
     <p>Listado de cursos</p>
 
+    <form action="<?php echo $_SERVER["REQUEST_URI"] ?>" method="get">
+        <label>Buscar: <input type="text" name="q"/> </label>
+        <input type="submit" value="buscar"/>
+        <input type="hidden" name="controller" value="cursos"/>
+        <input type="hidden" name="action" value="index"/>
+    </form>
+
     <table border="1">
         <thead>
         <th>Nombre</th>
@@ -35,23 +42,15 @@
         </tbody>
     </table>
     <?php
-    $url = $_SERVER["REQUEST_URI"];
-    $urlAnt = $urlSig = $url;
+    $urlAnt = "?controller=cursos&action=index&p=$paginaAnterior&q=$q";
+    $urlSig = "?controller=cursos&action=index&p=$paginaSiguiente&q=$q";
     if ($pagina != 1) {
-        if ( parse_url($url, PHP_URL_QUERY) )
-            $urlAnt .= "&p=$paginaAnterior&q=$q";
-        else
-            $urlAnt .= "?p=$paginaAnterior&q=$q";
         echo "<a href='$urlAnt'>Anterior</a>";
     }
     else
         echo "<a>Anterior</a>";
     echo "|";
     if ( ($pagina*$itemsPorPag) < $cantDeCursos ) {
-        if ( parse_url($url, PHP_URL_QUERY) )
-            $urlSig .=  "&p=$paginaSiguiente&q=$q";
-        else
-            $urlSig .= "?p=$paginaSiguiente&q=$q";
         echo "<a href='$urlSig'>Siguiente</a>";
     }
     else
