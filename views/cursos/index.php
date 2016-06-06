@@ -15,8 +15,8 @@
     <form action="<?php echo $_SERVER["REQUEST_URI"] ?>" method="get">
         <label>Buscar: <input type="text" name="q"/> </label>
         <input type="submit" value="buscar"/>
-        <input type="hidden" name="controller" value="cursos"/>
-        <input type="hidden" name="action" value="index"/>
+        <input type="hidden" name="controller" value="<?php echo $_GET['controller']; ?>"/>
+        <input type="hidden" name="action" value="<?php echo $_GET['action']; ?>"/>
     </form>
 
     <table border="1">
